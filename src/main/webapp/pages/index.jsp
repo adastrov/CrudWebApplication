@@ -25,6 +25,19 @@
             <span class="userName">Ваш логин: <span class="boldText"><sec:authentication property="principal.username" /> </span></span>
             <a class="btn btn-danger pull-right" href="<c:url value="/logout" />" role="button">Выйти</a>
         </div>
+
+        <h3>Все напоминания:</h3>(<a href="add">добавить</a>)
+
+        <h1>Tdfdfdfdfdf : ${rem}</h1>
+
+        <ol>
+            <c:forEach items="${reminders}" var="reminder">
+                <li>
+                    ${reminder.theme} ${reminder.theme} - ${reminder.theme}
+                </li>
+            </c:forEach>
+        </ol>
+
     </sec:authorize>
 </div>
 

@@ -1,40 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - testtask@localhost" uuid="8a9cb24b-929a-4580-afc8-33fa55108603">
+  <data-source name="testtask" uuid="8a9cb24b-929a-4580-afc8-33fa55108603">
     <database-info product="MySQL" version="5.7.11-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
-    <schema name="" catalog="testtask"/>
-    <table name="reminders" schema="" catalog="testtask" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="theme" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
-      <column name="date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVAoNik=" version="true"/>
-      <column name="done" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="movable" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <column name="owner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <index name="id_UNIQUE" unique="true" columns="id"/>
-    </table>
-    <table name="user_roles" schema="" catalog="testtask" type="TABLE">
-      <column name="user_role_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="role" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="user_role_id"/>
-      <foreign-key name="fk_username" columns="username" ref-table="users" ref-schema="" ref-catalog="testtask" ref-columns="username" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="uni_username_role" unique="true" columns="role,username"/>
-      <index name="fk_username_idx" unique="false" columns="username"/>
-    </table>
-    <table name="users" schema="" catalog="testtask" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="username" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="password" sqlType="CHAR" precision="120" scale="0" nullable="true" jdbcType="1"/>
-      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
-      <primary-key name="PRIMARY" columns="username"/>
-      <exported-key name="fk_username" table="user_roles" schema="" catalog="testtask" columns="username"/>
-      <index name="idusers_UNIQUE" unique="true" columns="id"/>
-      <index name="login_UNIQUE" unique="true" columns="username"/>
-    </table>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="testtask"/>
+      <table id="2" parent="1" name="reminders"/>
+      <table id="3" parent="1" name="user_roles"/>
+      <table id="4" parent="1" name="users"/>
+      <column id="5" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="6" parent="2" name="theme">
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="7" parent="2" name="date">
+        <mandatory>1</mandatory>
+        <data-type>timestamp(6)</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP(6)&apos;</default-expression>
+      </column>
+      <column id="8" parent="2" name="done">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="9" parent="2" name="movable">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="10" parent="2" name="owner">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="11" parent="2" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="12" parent="2" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <key id="13" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="14" parent="3" name="user_role_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="15" parent="3" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="16" parent="3" name="role">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <index id="17" parent="3" name="fk_username_idx">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="18" parent="3" name="UK_stlxfukw77ov5w1wo1tm3omca">
+        <columns>role
+username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="19" parent="3" name="uni_username_role">
+        <columns>role
+username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="20" parent="3" name="PRIMARY">
+        <columns>user_role_id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="21" parent="3" name="UK_stlxfukw77ov5w1wo1tm3omca">
+        <columns>role
+username</columns>
+        <underlying-index>UK_stlxfukw77ov5w1wo1tm3omca</underlying-index>
+      </key>
+      <key id="22" parent="3" name="uni_username_role">
+        <columns>role
+username</columns>
+        <underlying-index>uni_username_role</underlying-index>
+      </key>
+      <foreign-key id="23" parent="3" name="fk_username">
+        <columns>username</columns>
+        <ref-key>~.users.login_UNIQUE</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="24" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="25" parent="4" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="26" parent="4" name="password">
+        <data-type>char(120)</data-type>
+      </column>
+      <column id="27" parent="4" name="enabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <index id="28" parent="4" name="idusers_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="29" parent="4" name="login_UNIQUE">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="30" parent="4" name="idusers_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>idusers_UNIQUE</underlying-index>
+      </key>
+      <key id="31" parent="4" name="login_UNIQUE">
+        <columns>username</columns>
+        <underlying-index>login_UNIQUE</underlying-index>
+      </key>
+      <key id="32" parent="4" name="PRIMARY">
+        <columns>username</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
   </data-source>
 </component>

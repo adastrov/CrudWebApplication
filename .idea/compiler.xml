@@ -18,14 +18,22 @@
         <processorPath useClasspath="true" />
       </profile>
       <profile default="false" name="Annotation profile for TestTask" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="TestTask" />
       </profile>
+      <profile default="false" name="Annotation profile for HibernateSpringH2Example" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="HibernateSpringH2Example" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="HibernateSpringH2Example" target="1.6" />
       <module name="TestTask" target="1.6" />
     </bytecodeTargetLevel>
   </component>
