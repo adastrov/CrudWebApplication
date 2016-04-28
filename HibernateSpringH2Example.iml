@@ -18,7 +18,8 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/META-INF/spring/app-context-annotation.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/palagen/organizer/config/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/palagen/organizer/config/WebAppConfig.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -28,10 +29,11 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="DEVMODE" value="8a9cb24b-929a-4580-afc8-33fa55108603" />
-          <factory-entry name="PALAGEN" />
+          <factory-entry name="PALAGEN" value="6efb8406-3dc7-4f7d-90c3-e0bc81067259" />
           <factory-entry name="TESTTASK" value="8a9cb24b-929a-4580-afc8-33fa55108603" />
           <factory-entry name="entityManagerFactory" value="8a9cb24b-929a-4580-afc8-33fa55108603" />
         </datasource-mapping>
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/persistance.xml" />
       </configuration>
     </facet>
   </component>

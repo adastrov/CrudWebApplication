@@ -10,12 +10,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Spring Security</title>
+  <title>Авторизация пользователя</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="<c:url value="/pages/css/bootstrap.css" />" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
   <link href="<c:url value="/pages/css/signin.css" />" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,17 +34,20 @@
   </c:if>
 
   <form action="<c:url value='/login' />" method='POST'>
-    <h2 class="form-signin-heading">Please sign in</h2>
+    <h2 class="form-signin-heading">Эл. адрес или телефон</h2>
     <input type="text" class="form-control" name="username" placeholder="Email address" required autofocus value="">
     <br>
+    <h3 class="form-signin-heading">Пароль</h3>
     <input type="password" class="form-control" name="password" placeholder="Password" required value="">
     <br>
+    <p> Новый пользователь? <a href="/register">Рергистрация</a> </p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
 
     <input type="hidden" name="${_csrf.parameterName}"
            value="${_csrf.token}" />
 
   </form>
+
 </div>
 
 </body>

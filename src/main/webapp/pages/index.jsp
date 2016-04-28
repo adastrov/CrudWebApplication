@@ -6,7 +6,8 @@
 <html lang="en">
 <head>
 
-<link href="<c:url value="/pages/css/test.css" />" rel="stylesheet">
+<title>Wallins – система управления напоминаниями</title>
+
 <link href="<c:url value="/pages/css/bootstrap.css" />" rel="stylesheet">
 <link href="<c:url value="/pages/css/main.css" />" rel="stylesheet">
 
@@ -19,29 +20,14 @@
         <a class="btn btn-primary regis" href="<c:url value="/register" />" role="button">Регистрация</a>
         <a class="btn btn-success" href="<c:url value="/login" />" role="button">Войти</a>
     </sec:authorize>
-
     <sec:authorize access="isAuthenticated()">
         <div>
             <span class="userName">Ваш логин: <span class="boldText"><sec:authentication property="principal.username" /> </span></span>
             <a class="btn btn-danger pull-right" href="<c:url value="/logout" />" role="button">Выйти</a>
         </div>
-
-        <h3>Все напоминания:</h3>(<a href="add">добавить</a>)
-
-        <h1>Tdfdfdfdfdf : ${rem}</h1>
-
-        <ol>
-            <c:forEach items="${reminders}" var="reminder">
-                <li>
-                    ${reminder.theme} ${reminder.theme} - ${reminder.theme}
-                </li>
-            </c:forEach>
-        </ol>
-
     </sec:authorize>
 </div>
 
-<sec:authorize access="!isAuthenticated()">
 <div class="container">
     <div class="jumbotron" style="margin-top: 20px;">
         <h2>Система управления напоминаниями</h2>
@@ -51,7 +37,6 @@
         </p>
     </div>
 </div>
-</sec:authorize>
 
 <footer>
   <p>© Padalka Pavel 2016</p>

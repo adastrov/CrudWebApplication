@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface RemDao {
 
-	List<Rem> findAll();
+	void delete(int id);
+	void update(Rem rem);
+	Rem  get(int id);
+	List<Rem> findAll(long userId);
 
 }
